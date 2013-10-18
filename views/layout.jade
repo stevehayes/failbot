@@ -2,9 +2,9 @@ doctype 5
 html
   head
     title= title
-    script(src='/src/js/jquery-2.0.3.min.js')
     link(rel='stylesheet', href='/styles/bootstrap.min.css')
-    link(rel='stylesheet', href='/styles/bootstrap-theme.css')
+    link(rel='stylesheet', href='/styles/bootstrap-theme.min.css')
+    script(src='/js/jquery-2.0.3.min.js')
     body
       if message
         div(class="alert alert-success")
@@ -17,7 +17,5 @@ html
         a(href='/commands') Queue List
     div
         a(href='/work') Perform next action
-    div
-        form(name="add", action="/add", method="post")
-            input(type="text", name="command")
-            input(type="submit", value="Add Command",class="btn btn-success")
+
+    script(src='/js/client.js')
