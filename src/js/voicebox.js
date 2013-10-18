@@ -14,5 +14,7 @@ function play(command){
 };
 
 function playSound(file){
-	child = exec('aplay('+ file +')');
+	child = exec('aplay('+ file +')', function(error, stdOut, stdErr){
+		console.log('played sound file ' + file);
+	});
 };
