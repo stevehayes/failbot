@@ -1,5 +1,6 @@
 var SerialPort = require('serialport').SerialPort,
-    sp = new SerialPort('/dev/ttyAMA0',{baudrate:9600});
+    sp = new SerialPort('/dev/ttyAMA0',{baudrate:9600}),
+    voicebox = require('voicebox');
 
 var serialEnabled = false;
 var testOnly = false;
@@ -9,6 +10,7 @@ const RIGHT = 2;
 const LEFT = 3;
 
 function action(command){
+    play(command);
     return "I just " + command + ". That was fun!";
 }
 
@@ -38,6 +40,10 @@ function turn(direction){
 
 function stop(){
     return "STOPPPP!!!!!";
+}
+
+function play(command){
+    return voicebox.play(command);
 }
 
 function serialWrite(data, callback) {
