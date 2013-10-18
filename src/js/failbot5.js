@@ -1,7 +1,7 @@
 var SerialPort = require('serialport').SerialPort;
 
 var serialEnabled = false;
-var testMode = true;
+var testMode = false;
 
 if (testMode){
     console.log("RUNNING IN TEST MODE: NO SERIAL OUT!");
