@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 var SerialPort = require('serialport').SerialPort,
     sp = new SerialPort('/dev/ttyAMA0',{baudrate:9600}),
     voicebox = require('voicebox');
-=======
-var SerialPort = require('serialport').SerialPort;
->>>>>>> master
 
 var serialEnabled = false;
 var testMode = false;
