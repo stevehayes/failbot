@@ -1,0 +1,11 @@
+block content
+    h1 Current Commands
+    if commands
+        - each command in commands
+            p
+                = command
+    else
+       p
+           No Commands Added Yet
+
+    a(href='/add/new command') Add Command

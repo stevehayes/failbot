@@ -69,6 +69,7 @@ function killswitchEngage(pin) {
         });
     });
 }
-doOutputMode(7);
+
+//doOutputMode(7);
 //killswitchEngage(7);
 //doInputMode(11);
