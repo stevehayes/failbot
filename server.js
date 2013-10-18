@@ -84,6 +84,11 @@ app.get('/stop', function(req,res){
     res.send('stopping');
 });
 
+app.get('/sound/:version', function(req,res){
+   api.playSound(version);
+    showCommands(res);
+});
+
 function showCommands(res){
     var commands = api.getCommands();
     res.render('action', {commands: commands});

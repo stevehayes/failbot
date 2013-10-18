@@ -1,5 +1,7 @@
 var SerialPort = require('serialport').SerialPort,
-    lighterator = require('lighterator');
+    lighterator = require('lighterator'),
+    sp = new SerialPort('/dev/ttyAMA0',{baudrate:9600}),
+    voicebox = require('./voicebox');
 
 var serialEnabled = false;
 var testMode = false;
@@ -50,6 +52,10 @@ function light(command){
     return lighterator.light(command.turnOn);
 }
 
+function play(command){
+    return voicebox.play(command);
+}
+
 function serialWrite(data, callback) {
     if (testMode){
         console.log('would have ran this: ' + data);
@@ -89,4 +95,5 @@ module.exports.action = action;
 module.exports.forward = forward;
 module.exports.stop = stop;
 module.exports.turn = turn;
+module.exports.play = play;
 module.exports.light = light;
