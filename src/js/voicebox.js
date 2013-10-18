@@ -18,3 +18,5 @@ function playSound(file){
 		console.log('played sound file ' + file);
 	});
 };
+
+module.exports.play = play;
