@@ -56,7 +56,7 @@ function serialWrite(data, callback) {
         res.send('disabled');
     }
     else {
-        sp.write(count,function(err,res){
+        sp.write(data,function(err,res){
             if(err) {
                 console.log('error: ' + err);
             }
