@@ -28,25 +28,25 @@ app.get('/', function(req,res){
 
 app.get('/work', function(req,res){
     var response = api.performNextAction();
-    res.send('Response: ' + response);
+    res.render('index', { title: 'Did some work!', message: response});
 });
 
 app.get('/commands', function(req,res){
     var commands = api.getCommands();
-    res.render('queue', { title: 'Command List', 'commands': commands });
+    res.render('queue', { title: 'Command List', commands: commands });
 });
 
 app.post('/add', function(req,res){
     var command = req.body.command;
     api.addCommand(command);
-    res.render('index', {'message': 'Added ' + command + ' to the queue.'});
+    res.render('index', {message: 'Added ' + command + ' to the queue.'});
 });
 
 app.get('/add/:command', function(req,res){
     var command = req.params.command;
     if (command){
         api.addCommand(command);
-        res.send('Added ' + command + ' to the queue.');
+        res.render('index', {message: 'Added ' + command + ' to the queue.'});
     } else {
         res.status(400);
         res.send('No command found');
