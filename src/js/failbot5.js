@@ -83,3 +83,4 @@ module.exports.action = action;
 module.exports.forward = forward;
 module.exports.stop= stop;
 module.exports.turn= turn;
+module.exports.play= play;
