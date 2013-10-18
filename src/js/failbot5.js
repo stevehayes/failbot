@@ -1,4 +1,5 @@
-var SerialPort = require('serialport').SerialPort;
+var SerialPort = require('serialport').SerialPort,
+    lighterator = require('lighterator');
 
 var serialEnabled = false;
 var testMode = false;
@@ -45,6 +46,10 @@ function stop(){
     return "STOPPPP!!!!!";
 }
 
+function light(command){
+    return lighterator.light(command.turnOn);
+}
+
 function serialWrite(data, callback) {
     if (testMode){
         console.log('would have ran this: ' + data);
@@ -82,5 +87,6 @@ sp.open(function(){
 }
 module.exports.action = action;
 module.exports.forward = forward;
-module.exports.stop= stop;
-module.exports.turn= turn;
+module.exports.stop = stop;
+module.exports.turn = turn;
+module.exports.light = light;
