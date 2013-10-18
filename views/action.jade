@@ -1,14 +1,18 @@
 extends layout
 block content
-    div
-        a(href='/move/forward/1', class='col-xs-10 btn btn-lg btn-default') Move forward
+    div.row
+        a(href='/move/forward/1', class='col-sm-push-1 col-xs-10 btn btn-lg btn-default') Move forward
     div.row
         div
-            a(href='/move/turn/left', class='col-xs-5 btn btn-lg btn-default') Turn Left
+            a(href='/move/turn/left', class='col-sm-push-1 col-xs-4 btn btn-lg btn-default') Turn Left
+        div.col-xs-2
         div
-            a(href='/move/turn/right', class='col-xs-5 btn btn-lg btn-default') Turn Right
+            a(href='/move/turn/right', class='col-sm-push-1 col-xs-4 btn btn-lg btn-default') Turn Right
     div.row
         div
-            a(href='/light/on', class='col-xs-5 btn btn-lg btn-default') Light On
+            a(href='/light/on', class='col-sm-push-1 col-xs-4 btn btn-lg btn-default') Light On
+        div.col-xs-2
         div
-            a(href='/light/off', class='col-xs-5 btn btn-lg btn-default') Light Off
+            a(href='/light/off', class='col-sm-push-1 col-xs-4 btn btn-lg btn-default') Light Off
+    div.row
+        a(href='/sound/1', class='col-sm-push-1 col-xs-10 btn btn-lg btn-default') Sound
