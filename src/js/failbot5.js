@@ -1,4 +1,5 @@
 var SerialPort = require('serialport').SerialPort,
+    lighterator = require('lighterator'),
     sp = new SerialPort('/dev/ttyAMA0',{baudrate:9600}),
     voicebox = require('./voicebox');
 
@@ -47,6 +48,10 @@ function stop(){
     return "STOPPPP!!!!!";
 }
 
+function light(command){
+    return lighterator.light(command.turnOn);
+}
+
 function play(command){
     return voicebox.play(command);
 }
@@ -88,7 +93,7 @@ sp.open(function(){
 }
 module.exports.action = action;
 module.exports.forward = forward;
-module.exports.stop= stop;
-module.exports.turn= turn;
-module.exports.play= play;
-
+module.exports.stop = stop;
+module.exports.turn = turn;
+module.exports.play = play;
+module.exports.light = light;
