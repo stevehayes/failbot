@@ -22,7 +22,8 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', function(req,res){
-    res.render('index', { title: 'THIS IS FAILBOT!'});
+    var commands = api.getCommands();
+    res.render('action', { title: 'THIS IS FAILBOT!'});
 });
 
 app.get('/work', function(req,res){
