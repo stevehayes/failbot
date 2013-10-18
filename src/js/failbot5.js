@@ -1,13 +1,23 @@
+<<<<<<< HEAD
 var SerialPort = require('serialport').SerialPort,
     sp = new SerialPort('/dev/ttyAMA0',{baudrate:9600}),
     voicebox = require('voicebox');
+=======
+var SerialPort = require('serialport').SerialPort;
+>>>>>>> master
 
 var serialEnabled = false;
-var testOnly = false;
+var testMode = false;
 
-const FORWARD = 1;
-const RIGHT = 2;
-const LEFT = 3;
+if (testMode){
+    console.log("RUNNING IN TEST MODE: NO SERIAL OUT!");
+    console.log("Update testMode in failbot5.js to change");
+} else {
+    sp = new SerialPort('/dev/ttyAMA0',{baudrate:9600});
+}
+const FORWARD = "1";
+const LEFT = "2";
+const RIGHT = "3";
 
 function action(command){
     play(command);
@@ -47,7 +57,7 @@ function play(command){
 }
 
 function serialWrite(data, callback) {
-    if (testOnly){
+    if (testMode){
         console.log('would have ran this: ' + data);
         return;
     }
@@ -57,7 +67,7 @@ function serialWrite(data, callback) {
         res.send('disabled');
     }
     else {
-        sp.write(count,function(err,res){
+        sp.write(data,function(err,res){
             if(err) {
                 console.log('error: ' + err);
             }
@@ -69,6 +79,8 @@ function serialWrite(data, callback) {
     }
 }
 
+if (!testMode){
+
 sp.open(function(){
     sp.on('data',function(data){
         console.log(data);
@@ -79,8 +91,10 @@ sp.open(function(){
     serialEnabled = true;
 });
 
+}
 module.exports.action = action;
 module.exports.forward = forward;
 module.exports.stop= stop;
 module.exports.turn= turn;
 module.exports.play= play;
+

@@ -11,7 +11,6 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'src')));
@@ -23,7 +22,8 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', function(req,res){
-    res.render('index', { title: 'THIS IS FAILBOT!'});
+    var commands = api.getCommands();
+    res.render('action', { title: 'THIS IS FAILBOT!'});
 });
 
 app.get('/work', function(req,res){
@@ -60,18 +60,21 @@ app.get('/add/:command', function(req,res){
 app.get('/move/forward/:count',function(req,res){
     var count = req.params.count;
     var response = api.moveForward(count);
-    res.send(response);
+    var commands = api.getCommands();
+    res.render('action', {commands: commands});
 });
 
 app.post('/move/forward',function(req,res){
     var count = req.body.count;
     var response = api.moveForward(count);
-    res.send(response);
+    var commands = api.getCommands();
+    res.render('action', {commands: commands});
 });
 
 app.get('/move/turn/:direction',function(req,res){
     api.turn(req.params.direction);
-    res.send('turning');
+    var commands = api.getCommands();
+    res.render('action', {commands: commands});
 });
 
 app.get('/stop', function(req,res){

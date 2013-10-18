@@ -18,7 +18,7 @@ performNextAction: function(){
         var nextAction = currentQueue.pop();
         this.setCommands(currentQueue);
         this.performAction(nextAction);
-        return "BAM!";
+        return nextAction;
     }
     return "Ain't no commands to perform, DAWG";
 },
@@ -41,6 +41,7 @@ addCommand: function(command){
     var currentQueue = this.getCommands();
     currentQueue.push(command);
     this.setCommands(currentQueue);
+    this.performAction(command);
 },
 
 moveForward: function(count){

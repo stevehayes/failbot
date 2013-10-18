@@ -11,7 +11,8 @@
     "johnny-five": "0.7.3",
     "node-persist": "0.0.1",
     "jade": "*",
-    "serialport": "*"
+    "serialport": "*",
+    "socket.io": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {},
