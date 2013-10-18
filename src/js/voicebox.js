@@ -1,4 +1,5 @@
-var forwardSound = '/media/jamesbro.wav',
+var exec = require('child_process').exec,
+	forwardSound = '/media/jamesbro.wav',
 	stopSound = '/media/dalek-exterminate.wave',;
 
 function play(command){
@@ -13,6 +14,5 @@ function play(command){
 };
 
 function playSound(file){
-	var sound = new Audio(file); 
-	sound.play();
+	child = exec('aplay('+ file +')');
 };
