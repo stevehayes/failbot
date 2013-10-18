@@ -5,7 +5,7 @@ block content
     if commands
         - each command in commands
             p
-                = command
+                = JSON.stringify(command)
     else
        p
            No Commands Added Yet

@@ -1,0 +1,10 @@
+extends layout
+block content
+    div
+        a(href='/move/turn', class='btn btn-default') Turn
+    div
+        a(href='/stop', class='btn btn-default') Stop
+    div
+        form(name="moveForward", action="/move/forward", method="post")
+            input(type="text", name="count")
+            input(type="submit", value="move forward",class="btn btn-success")

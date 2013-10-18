@@ -31,6 +31,10 @@ app.get('/work', function(req,res){
     res.render('index', { title: 'Did some work!', message: response});
 });
 
+app.get('/action', function(req,res){
+    res.render('action', { title: 'Select an action'});
+});
+
 app.get('/commands', function(req,res){
     var commands = api.getCommands();
     res.render('queue', { title: 'Command List', commands: commands });
@@ -51,13 +55,29 @@ app.get('/add/:command', function(req,res){
         res.status(400);
         res.send('No command found');
     }
-})
+});
 
 app.get('/move/forward/:count',function(req,res){
     var count = req.params.count;
-    res.send('moving forward ')
+    var response = api.moveForward(count);
+    res.send(response);
 });
 
+app.post('/move/forward',function(req,res){
+    var count = req.body.count;
+    var response = api.moveForward(count);
+    res.send(response);
+});
+
+app.get('/move/turn',function(req,res){
+    api.turn();
+    res.send('turning');
+});
+
+app.get('/stop', function(req,res){
+    api.stop();
+    res.send('stopping');
+});
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
