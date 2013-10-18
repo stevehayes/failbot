@@ -59,18 +59,21 @@ app.get('/add/:command', function(req,res){
 app.get('/move/forward/:count',function(req,res){
     var count = req.params.count;
     var response = api.moveForward(count);
-    res.send(response);
+    var commands = api.getCommands();
+    res.render('action', {commands: commands});
 });
 
 app.post('/move/forward',function(req,res){
     var count = req.body.count;
     var response = api.moveForward(count);
-    res.send(response);
+    var commands = api.getCommands();
+    res.render('action', {commands: commands});
 });
 
 app.get('/move/turn/:direction',function(req,res){
     api.turn(req.params.direction);
-    res.send('turning');
+    var commands = api.getCommands();
+    res.render('action', {commands: commands});
 });
 
 app.get('/stop', function(req,res){

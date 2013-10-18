@@ -18,4 +18,8 @@ html
     div
         a(href='/work') Perform next action
 
+    if commands
+        - each command in commands
+            p
+                = JSON.stringify(command)
     script(src='/js/client.js')
