@@ -34,6 +34,8 @@ module.exports = {
             case 'light':
                 robot.light(command.turnOn);
                 break;
+            case 'sound':
+                robot.play('forward');
             default:
                 robot.action(command);
                 break;

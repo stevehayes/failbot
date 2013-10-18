@@ -1,6 +1,6 @@
 var SerialPort = require('serialport').SerialPort,
     sp = new SerialPort('/dev/ttyAMA0',{baudrate:9600}),
-    voicebox = require('voicebox');
+    voicebox = require('./voicebox');
 
 var serialEnabled = false;
 var testMode = false;
@@ -16,7 +16,6 @@ const LEFT = "2";
 const RIGHT = "3";
 
 function action(command){
-    play(command);
     return "I just " + command + ". That was fun!";
 }
 
