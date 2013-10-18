@@ -31,6 +31,9 @@ performAction: function(command){
         case 'forward':
             robot.forward(command.count);
             break;
+        case 'light':
+            robot.light(command.turnOn);
+            break;
         default:
             robot.action(command);
             break;
@@ -54,5 +57,9 @@ turn: function (direction){
 
  stop: function(){
      this.performAction({action: 'stop'});
- }
+ },
+
+    light: function(turnOn){
+        this.performAction({action: 'light', turnOn: turnOn});
+    }
 };

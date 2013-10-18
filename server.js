@@ -60,27 +60,34 @@ app.get('/add/:command', function(req,res){
 app.get('/move/forward/:count',function(req,res){
     var count = req.params.count;
     var response = api.moveForward(count);
-    var commands = api.getCommands();
-    res.render('action', {commands: commands});
+    showCommands(res);
 });
 
 app.post('/move/forward',function(req,res){
     var count = req.body.count;
     var response = api.moveForward(count);
-    var commands = api.getCommands();
-    res.render('action', {commands: commands});
+    showCommands(res);
 });
 
 app.get('/move/turn/:direction',function(req,res){
     api.turn(req.params.direction);
-    var commands = api.getCommands();
-    res.render('action', {commands: commands});
+    showCommands(res);
+});
+
+app.get('/light/:turnOn', function(req,res){
+   api.light(req.params.turnOn);
+    res.render()
 });
 
 app.get('/stop', function(req,res){
     api.stop();
     res.send('stopping');
 });
+
+function showCommands(res){
+    var commands = api.getCommands();
+    res.render('action', {commands: commands});
+}
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));

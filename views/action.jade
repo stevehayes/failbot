@@ -2,7 +2,13 @@ extends layout
 block content
     div
         a(href='/move/forward/1', class='col-xs-10 btn btn-lg btn-default') Move forward
-    div
-        a(href='/move/turn/left', class='col-xs-5 btn btn-lg btn-default') Turn Left
-    div
-        a(href='/move/turn/right', class='col-xs-5 btn btn-lg btn-default') Turn Right
+    div.row
+        div
+            a(href='/move/turn/left', class='col-xs-5 btn btn-lg btn-default') Turn Left
+        div
+            a(href='/move/turn/right', class='col-xs-5 btn btn-lg btn-default') Turn Right
+    div.row
+        div
+            a(href='/light/on', class='col-xs-5 btn btn-lg btn-default') Light On
+        div
+            a(href='/light/off', class='col-xs-5 btn btn-lg btn-default') Light Off

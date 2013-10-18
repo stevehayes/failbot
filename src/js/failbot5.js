@@ -53,7 +53,6 @@ function serialWrite(data, callback) {
 
     if(!serialEnabled) {
         console.log('serial disabled!!!!');
-        res.send('disabled');
     }
     else {
         sp.write(data,function(err,res){
