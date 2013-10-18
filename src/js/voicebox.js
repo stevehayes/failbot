@@ -1,6 +1,6 @@
 var exec = require('child_process').exec,
 	forwardSound = '/media/jamesbro.wav',
-	stopSound = '/media/dalek-exterminate.wave',;
+	stopSound = '/media/dalek-exterminate.wave';
 
 function play(command){
 	switch(command.action){

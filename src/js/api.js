@@ -65,7 +65,7 @@ module.exports = {
         this.performAction({action: 'light', turnOn: turnOn});
     },
 
-    playSound: function (version) {
-        this.performAction({action: 'sound', version: version});
+    playSound: function () {
+        this.performAction({action: 'sound'});
     }
 };

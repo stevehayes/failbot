@@ -85,7 +85,7 @@ app.get('/stop', function(req,res){
 });
 
 app.get('/sound/:version', function(req,res){
-   api.playSound(version);
+   api.playSound();
     showCommands(res);
 });
 
