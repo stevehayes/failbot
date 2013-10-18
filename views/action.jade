@@ -1,10 +1,14 @@
 extends layout
 block content
     div
-        a(href='/move/turn', class='btn btn-default') Turn
+        a(href='/move/turn/left', class='btn btn-default') Turn Left
+    div
+        a(href='/move/turn/right', class='btn btn-default') Turn Right
+    div
+        a(href='/move/forward/1', class='btn btn-default') Move forward 1
     div
         a(href='/stop', class='btn btn-default') Stop
     div
         form(name="moveForward", action="/move/forward", method="post")
-            input(type="text", name="count")
+            input(type="text", name="count", placeholder="Number of Spaces to Move", value="1")
             input(type="submit", value="move forward",class="btn btn-success")

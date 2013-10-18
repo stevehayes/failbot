@@ -69,8 +69,8 @@ app.post('/move/forward',function(req,res){
     res.send(response);
 });
 
-app.get('/move/turn',function(req,res){
-    api.turn();
+app.get('/move/turn/:direction',function(req,res){
+    api.turn(req.params.direction);
     res.send('turning');
 });
 

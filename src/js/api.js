@@ -17,13 +17,24 @@ performNextAction: function(){
     if (currentQueue && currentQueue.length){
         var nextAction = currentQueue.pop();
         this.setCommands(currentQueue);
-        return robot.action(nextAction);
+        this.performAction(nextAction);
+        return "BAM!";
     }
     return "Ain't no commands to perform, DAWG";
 },
 
 performAction: function(command){
-    return robot.action(command);
+    switch (command.action){
+        case 'turn':
+            robot.turn(command.direction);
+            break;
+        case 'forward':
+            robot.forward(command.count);
+            break;
+        default:
+            robot.action(command);
+            break;
+    }
 },
 
 addCommand: function(command){
@@ -36,8 +47,8 @@ moveForward: function(count){
     this.addCommand({action: 'forward', count: count});
 },
 
-turn: function (){
-    this.addCommand({action: 'turn'});
+turn: function (direction){
+    this.addCommand({action: 'turn', direction: direction});
 },
 
  stop: function(){

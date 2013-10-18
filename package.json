@@ -10,7 +10,8 @@
     "express": "~3.4.1",
     "johnny-five": "0.7.3",
     "node-persist": "0.0.1",
-    "jade": "*"
+    "jade": "*",
+    "serialport": "*"
   },
   "devDependencies": {},
   "optionalDependencies": {},
