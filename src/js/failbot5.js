@@ -2,7 +2,7 @@ var SerialPort = require('serialport').SerialPort,
     sp = new SerialPort('/dev/ttyAMA0',{baudrate:9600});
 
 var serialEnabled = false;
-var testOnly = true;
+var testOnly = false;
 
 const FORWARD = 1;
 const RIGHT = 2;
