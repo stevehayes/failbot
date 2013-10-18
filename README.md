@@ -1,23 +1,18 @@
 F.A.I.L.B.O.T 
 =============
 **F**ully
-
 **A**utomated
-
 **I**rritating
-
 **L**ifeform
-
 **B**ased
-
 **O**n
-
 **T**ests
 
 
 SETUP
 =====
 There are a couple basic things:
+
 1. Run npm install on the repo
 
 2. Run node server.js
