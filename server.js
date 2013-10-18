@@ -1,11 +1,9 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var storage = require('node-persist');
 var app = express();
-var robot = require('./failbot5');
+var api = require('./src/js/api');
 
-const STORAGE_QUEUE = "queue";
 
 // all environments
 app.set('port', 8001);
@@ -16,6 +14,8 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
+app.use(express.static(path.join(__dirname, 'src')));
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -27,26 +27,26 @@ app.get('/', function(req,res){
 });
 
 app.get('/work', function(req,res){
-    var currentQueue = storage.getItem(STORAGE_QUEUE);
-    if (currentQueue && currentQueue.length){
-        var nextAction = currentQueue.pop();
-        var response = robot.action(nextAction);
-        res.send('Did: ' + nextAction + '. Response: ' + response);
-    }
+    var response = api.performNextAction();
+    res.render('index', { title: 'Did some work!', message: response});
 });
 
 app.get('/commands', function(req,res){
-    var requests = storage.getItem(STORAGE_QUEUE);
-    res.render('queue', { title: 'Command List', 'commands': requests });
+    var commands = api.getCommands();
+    res.render('queue', { title: 'Command List', commands: commands });
+});
+
+app.post('/add', function(req,res){
+    var command = req.body.command;
+    api.addCommand(command);
+    res.render('index', {message: 'Added ' + command + ' to the queue.'});
 });
 
 app.get('/add/:command', function(req,res){
     var command = req.params.command;
     if (command){
-        var currentQueue = storage.getItem(STORAGE_QUEUE) || [];
-        currentQueue.push(command);
-        storage.setItem(STORAGE_QUEUE, currentQueue);
-        res.send('Added ' + command + ' to the queue.');
+        api.addCommand(command);
+        res.render('index', {message: 'Added ' + command + ' to the queue.'});
     } else {
         res.status(400);
         res.send('No command found');
